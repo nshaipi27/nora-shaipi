@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="https://use.typekit.net/hti2psu.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="topnav-left">
+                    <li><a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
+                    </li>
+                </div>
+                <div class="topnav-right">
+                    <li><a href="{{ url_for('about') }}"
+                            class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
+                    <li><a href="{{ url_for('portfolio') }}"
+                            class="{% if active_page == 'portfolio' %}active{% endif %}">Portfolio</a></li>
+                    <li><a href="{{ url_for('contact') }}"
+                            class="{% if active_page == 'contact' %}active{% endif %}">Contact</a></li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <img class="chevronup" src="static/images/Chevron Up.png">
+        <div class="textfooter">
+            <h4>Nora Shaipi<br></h4>
+            <p>Get in touch at<br></p>
+            <p>LINKEDIN/EMAIL/GITHUB</p>
+        </div>
+    </footer>
+    <script>
+        // Function to scroll to the footer when chevron is clicked
+        function scrollToFooter() {
+            const footer = document.querySelector('footer');
+            window.scrollTo({
+                top: footer.offsetTop,
+                behavior: 'smooth'  // Smooth scroll behavior
+            });
+        }
+    </script>
+</body>
+</html>
